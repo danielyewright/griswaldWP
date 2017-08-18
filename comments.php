@@ -7,7 +7,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package underscores
+ * @package griswald
  */
 
 /*
@@ -20,53 +20,64 @@ if ( post_password_required() ) {
 }
 ?>
 
-<div id="comments" class="comments-area">
+<?php
+$commenter = wp_get_current_commenter();
+$req = get_option( 'require_name_email' );
+$aria_req = ( $req ? " aria-required='true'" : '' );
+$fields = apply_filters( 'comment_form_default_fields', array(
+'author' => '<div class="form-group">' . '<label for="author">' . __( 'Name' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
+    '<input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' /></div>',
+'email'  => '<div class="form-group"><label for="email">' . __( 'Email' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
+    '<input id="email" class="form-control" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /></div>'
+) );
 
-	<?php
-	// You can start editing here -- including this comment!
+$comments_args = array(
+    'fields' =>  $fields,
+    'title_reply' => '<h2>Post a Comment</h2>',
+    'label_submit' => 'Send Comment',
+    'class_submit' => 'btn btn-primary',
+    'comment_field'  => '<div class="form-group"><label for="email">' . __( 'Comment' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
+        '<textarea id="comment" class="form-control" name="comment" rows="10"' . $aria_req . '></textarea></div>',
+    'comment_notes_after' => ''
+);
+
+comment_form($comments_args);
+?>
+
+<div class="divider"></div>
+
+<div id="comments" class="comments-wrapper">
+
+    <?php
 	if ( have_comments() ) : ?>
-		<h2 class="comments-title">
+		<h2>
 			<?php
-			$comment_count = get_comments_number();
-			if ( 1 === $comment_count ) {
+			    $comment_count = get_comments_number();
 				printf(
-					/* translators: 1: title. */
-					esc_html_e( 'One thought on &ldquo;%1$s&rdquo;', 'underscores' ),
+					esc_html_e( 'Comments (' . $comment_count . ')', 'griswald' ),
 					'<span>' . get_the_title() . '</span>'
 				);
-			} else {
-				printf( // WPCS: XSS OK.
-					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $comment_count, 'comments title', 'underscores' ) ),
-					number_format_i18n( $comment_count ),
-					'<span>' . get_the_title() . '</span>'
-				);
-			}
 			?>
 		</h2><!-- .comments-title -->
 
 		<?php the_comments_navigation(); ?>
 
-		<ol class="comment-list">
-			<?php
-				wp_list_comments( array(
-					'style'      => 'ol',
-					'short_ping' => true,
-				) );
-			?>
-		</ol><!-- .comment-list -->
+        <?php
+            wp_list_comments( array(
+                'short_ping' => true,
+                'callback'   => 'custom_comments_callback'
+            ) );
+        ?>
 
 		<?php the_comments_navigation();
 
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) : ?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'underscores' ); ?></p>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'griswald' ); ?></p>
 		<?php
 		endif;
 
 	endif; // Check for have_comments().
-
-	comment_form();
 	?>
 
 </div><!-- #comments -->

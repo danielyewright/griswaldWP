@@ -2,28 +2,26 @@
 
 get_header(); ?>
 
-<div class="row text-block">
-    <div class="col-lg-6">
-        <h1><?php the_title(); ?></h1>
-        <?php the_excerpt(); ?>
-        <ul class="unstyled">
-            <li><strong>Website:</strong> <a href="#">www.website.com</a></li>
-            <li><strong>Year:</strong> 2013</li>
-        </ul>
+<?php while ( have_posts() ) : the_post(); ?>
+    <div class="row text-block">
+        <div class="col-lg-6">
+            <h1><?php the_title(); ?></h1>
+            <?php the_excerpt(); ?>
+            <ul class="unstyled">
+                <li><strong>Website:</strong> <a href="<?php echo esc_url( get_post_meta( $post->ID, 'website', true ) ); ?>" target="_blank"><?php echo esc_url( get_post_meta( $post->ID, 'website', true ) ); ?></a></li>
+                <li><strong>Year:</strong> <?php echo esc_html__( get_post_meta( $post->ID, 'year', true ) ); ?></li>
+            </ul>
+        </div>
     </div>
-</div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <?php
-            while ( have_posts() ) : the_post();
+    <div class="row">
+        <div class="col-lg-12">
 
-                the_content();
+            <?php the_content(); ?>
 
-            endwhile;
-        ?>
+        </div>
     </div>
-</div>
+<?php endwhile; ?>
 
 <div class="portfolio-thumbs-wrapper">
     <div class="row">

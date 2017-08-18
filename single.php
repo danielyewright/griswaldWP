@@ -40,102 +40,16 @@ get_header(); ?>
 
                 <div class="divider"></div>
 
-                <h2>Post a Comment</h2>
-                <form role="form" class="comment-form">
-                    <fieldset>
-                        <div class="form-group">
-                            <label>Name *</label>
-                            <input type="text" class="form-control" placeholder="Enter Your Name" />
-                        </div>
-                        <div class="form-group">
-                            <label>Email *</label>
-                            <input type="text" class="form-control" placeholder="Enter Your Email" />
-                        </div>
-                        <div class="form-group">
-                            <label>Website</label>
-                            <input type="text" class="form-control" placeholder="http://" />
-                        </div>
-                        <div class="form-group">
-                            <label>Comment *</label>
-                            <textarea class="form-control" rows="10">Enter your comment...</textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Comment</button>
-                    </fieldset>
-                </form>
-
-                <div class="divider"></div>
-
-                <div class="comments-wrapper">
-                    <h2>Comments</h2>
-                    <div class="comment">
-                        <h3><a href="#">Axl Rose</a></h3>
-                        <div class="comment-meta">
-                            <small>January 1, 2014 at 1:31 am .::. <a href="#">Reply</a></small>
-                        </div>
-                        <div class="comment-body">
-                            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                        </div>
-                    </div><!-- comment //-->
-                    <div class="comment">
-                        <h3><a href="#">Axl Rose</a></h3>
-                        <div class="comment-meta">
-                            <small>January 1, 2014 at 1:31 am .::. <a href="#">Reply</a></small>
-                        </div>
-                        <div class="comment-body">
-                            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                        </div>
-                    </div><!-- comment //-->
-                    <div class="comment">
-                        <h3><a href="#">Axl Rose</a></h3>
-                        <div class="comment-meta">
-                            <small>January 1, 2014 at 1:31 am .::. <a href="#">Reply</a></small>
-                        </div>
-                        <div class="comment-body">
-                            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                        </div>
-                    </div><!-- comment //-->
-                    <div class="comment comment-child">
-                        <h3><a href="#">Axl Rose</a></h3>
-                        <div class="comment-meta">
-                            <small>January 1, 2014 at 1:31 am .::. <a href="#">Reply</a></small>
-                        </div>
-                        <div class="comment-body">
-                            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                        </div>
-                    </div><!-- comment //-->
-                    <div class="comment comment-child">
-                        <h3><a href="#">Axl Rose</a></h3>
-                        <div class="comment-meta">
-                            <small>January 1, 2014 at 1:31 am .::. <a href="#">Reply</a></small>
-                        </div>
-                        <div class="comment-body">
-                            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                        </div>
-                    </div><!-- comment //-->
-                    <div class="comment">
-                        <h3><a href="#">Axl Rose</a></h3>
-                        <div class="comment-meta">
-                            <small>January 1, 2014 at 1:31 am .::. <a href="#">Reply</a></small>
-                        </div>
-                        <div class="comment-body">
-                            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                        </div>
-                    </div><!-- comment //-->
-                    <div class="comment">
-                        <h3><a href="#">Axl Rose</a></h3>
-                        <div class="comment-meta">
-                            <small>January 1, 2014 at 1:31 am .::. <a href="#">Reply</a></small>
-                        </div>
-                        <div class="comment-body">
-                            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                        </div>
-                    </div><!-- comment //-->
-                </div>
+                <?php
+                if ( comments_open() || get_comments_number() ) :
+                    comments_template();
+                endif;
+                ?>
             </div><!-- .blog-roll //-->
             <?php endwhile; ?>
         </div>
     </div>
 
 <?php
-get_sidebar();
+// get_sidebar();
 get_footer();

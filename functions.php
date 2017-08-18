@@ -113,6 +113,20 @@ function griswald_widgets_init() {
 }
 add_action( 'widgets_init', 'griswald_widgets_init' );
 
+function custom_comments_callback( $comment, $args, $depth ) {
+    $GLOBALS['comment'] = $comment;
+
+    ?>
+    <div id="comment-<?php comment_ID(); ?>" class="comment">
+        <h3><a href="#"><?php the_author(); ?></a></h3>
+        <div class="comment-meta">
+            <small><?php the_date( 'F j, Y' ); ?> at <?php the_time( 'F j, Y' ); ?> .::. <?php comment_reply_link( array_merge( $args, array( 'reply_text' => __( 'Reply', 'griswald' ), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?></small>
+        </div>
+        <div class="comment-body"><?php comment_text(); ?></div>
+    </div>
+    <?php
+}
+
 /**
  * Enqueue scripts and styles.
  */
