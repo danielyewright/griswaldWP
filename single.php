@@ -18,7 +18,7 @@ get_header(); ?>
                 <div class="post">
                     <div class="post-meta">
                         <ul class="inline">
-                            <li>Posted by <a href=""><?php echo esc_html__( get_the_author() ); ?></a></li>
+                            <li>Posted by <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo esc_html__( get_the_author() ); ?></a></li>
                             <li class="light-grey">/</li>
                             <li><?php echo get_the_date( 'F j, Y' ); ?></li>
                             <li class="light-grey">/</li>

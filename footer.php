@@ -30,12 +30,12 @@
                     </div>
                     <div class="col-lg-4 social-media">
                         <ul class="inline pull-right">
-                            <li><a href="http://facebook.com/cardeo77"><i class="fa fa-facebook-square"></i></a></li>
-                            <li><a href="http://twitter.com/cardeo"><i class="fa fa-twitter-square"></i></a></li>
-                            <li><a href="http://instagram.com/cardeoart"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="http://dribbble.com/cardeo"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
-                            <li><a href="mailto:hatemail@cardeo.ca"><i class="fa fa-envelope"></i></a></li>
+                            <li><a href="<?php echo esc_attr( get_theme_mod( 'footer_options_facebook', '#' ) ); ?>"><i class="fa fa-facebook-square"></i></a></li>
+                            <li><a href="<?php echo esc_attr( get_theme_mod( 'footer_options_twitter', '#' ) ); ?>"><i class="fa fa-twitter-square"></i></a></li>
+                            <li><a href="<?php echo esc_attr( get_theme_mod( 'footer_options_instagram', '#' ) ); ?>"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="<?php echo esc_attr( get_theme_mod( 'footer_options_dribbble', '#' ) ); ?>"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="<?php echo esc_attr( get_theme_mod( 'footer_options_linkedin', '#' ) ); ?>"><i class="fa fa-linkedin-square"></i></a></li>
+                            <li><a href="mailto:<?php echo esc_attr( get_theme_mod( 'footer_options_contact_email', '#' ) ); ?>"><i class="fa fa-envelope"></i></a></li>
                         </ul>
                     </div>
                 </div>
