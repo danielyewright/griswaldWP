@@ -127,6 +127,14 @@ function custom_comments_callback( $comment, $args, $depth ) {
     <?php
 }
 
+function griswald_move_comment_field_below( $fields ) {
+    $comment_field = $fields['comment'];
+    unset( $fields['comment'] );
+    $fields['comment'] = $comment_field;
+    return $fields;
+}
+add_filter( 'comment_form_fields', 'griswald_move_comment_field_below' );
+
 /**
  * Enqueue scripts and styles.
  */
